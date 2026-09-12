@@ -1,0 +1,35 @@
+# Окружение
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Инструменты
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Данные: в репозиторий не кладём ничего скачанного и никаких дампов
+data/
+*.pb
+*.gtfs.zip
+*.dump
+*.sql.gz
+
+# Локальные тома контейнеров
+.docker-data/
+
+# Редакторы и ОС
+.idea/
+.vscode/
+.DS_Store
