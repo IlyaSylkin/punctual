@@ -33,3 +33,7 @@ data/
 .idea/
 .vscode/
 .DS_Store
+# черновики и промежуточные документы: не публикуются
+docs/NOTES.md
+docs/CHARTER.md
+docs/backlog.md
