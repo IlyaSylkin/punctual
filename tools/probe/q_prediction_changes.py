@@ -1,10 +1,9 @@
 """Сколько раз реально меняется прогноз за жизнь пары (рейс, остановка)."""
-import sys, collections, statistics
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, collections, statistics
 from reader import snapshots, trip_key
 
 HOURS = ["20260914-14","20260914-15","20260914-16"]
-ROOT = "/mnt/data/learning/capture/broken"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 
 seen = collections.defaultdict(lambda: [0, None, 0])   # ключ -> [наблюдений, послед.значение, изменений]
 snaps = 0

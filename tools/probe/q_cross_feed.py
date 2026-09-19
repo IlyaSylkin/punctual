@@ -1,10 +1,9 @@
 """Q8 связь фидов, Q11 расхождение определений прибытия, Q12 переход NO_DATA."""
-import sys, collections, statistics
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, collections, statistics
 from reader import snapshots, trip_key
 
 HOURS = ["20260914-13","20260914-14","20260914-15","20260914-16","20260914-17"]
-ROOT = "/mnt/data/learning/capture/broken"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 STATUS = {0:"INCOMING_AT", 1:"STOPPED_AT", 2:"IN_TRANSIT_TO"}
 
 # --- проход по фиду прогнозов ---

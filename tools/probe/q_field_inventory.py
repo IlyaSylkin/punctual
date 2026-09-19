@@ -1,9 +1,8 @@
 """Заполненность полей по обоим фидам. Считается по захваченным архивам."""
-import sys, collections
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, collections
 from reader import snapshots
 
-ROOT = "/mnt/data/learning/capture/broken"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 HOURS = ["20260914-14", "20260914-15"]
 
 def walk(msg, prefix, cnt):

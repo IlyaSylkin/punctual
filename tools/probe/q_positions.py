@@ -1,10 +1,9 @@
 """Вопросы 1,3,4,5,16,17 по фиду позиций HSL."""
-import sys, collections, statistics, glob, os
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, collections, statistics, glob, os
 from reader import snapshots
 
 HOURS = ["20260914-13","20260914-14","20260914-15","20260914-16","20260914-17"]
-ROOT = "/mnt/data/learning/capture/broken"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 
 last = {}                       # vehicle -> (ts, lat, lon)
 periods = collections.Counter() # дельты vehicle.timestamp

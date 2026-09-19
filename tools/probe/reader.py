@@ -2,7 +2,7 @@
 import gzip, struct, glob, os
 from google.transit import gtfs_realtime_pb2 as pb
 
-ROOT = "/mnt/data/learning/capture"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 import zlib
 
 def snapshots(feed, hours=None, step=1, dedup=True, root=None):

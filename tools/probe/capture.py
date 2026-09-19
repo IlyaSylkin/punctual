@@ -8,7 +8,7 @@ import httpx
 
 RUN = f"{dt.datetime.now():%Y%m%d-%H%M%S}-{os.getpid()}"   # свой набор файлов на запуск
 
-ROOT = "/mnt/data/learning/capture"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 UA = {"User-Agent": "gtfs-feed-probe/0.1 (portfolio feasibility study; polite, low rate)"}
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 26.0
 POLL = 10.0

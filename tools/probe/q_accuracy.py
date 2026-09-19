@@ -1,10 +1,9 @@
 """Вопросы 13,14,15 по фиду прогнозов HSL. Два прохода: факты, затем прогнозы."""
-import sys, collections, statistics
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, collections, statistics
 from reader import snapshots, trip_key
 
 HOURS = ["20260914-13","20260914-14","20260914-15","20260914-16","20260914-17"]
-ROOT = "/mnt/data/learning/capture/broken"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 
 # --- проход 1: устоявшийся факт по каждой паре (рейс, остановка) ---
 fact = {}

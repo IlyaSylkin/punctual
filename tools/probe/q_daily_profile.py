@@ -3,11 +3,10 @@
 Нормирует на долю успешных опросов в часе: дыры в захвате не должны
 выглядеть как спад активности транспорта.
 """
-import sys, json, glob, os, collections, datetime as dt
-sys.path.insert(0, "/mnt/data/learning/capture")
+import os, sys, json, glob, os, collections, datetime as dt
 from reader import snapshots, trip_key
 
-ROOT = "/mnt/data/learning/capture"
+ROOT = os.environ.get("CAPTURE_DIR", "./capture")
 RUN = "20260916-193311-16018"
 POLL = 10.0
 
