@@ -1,0 +1,22 @@
+# Образец локальных переопределений: открывает порты для отладки.
+# Копия под именем docker-compose.override.yml — в .gitignore.
+# Привязка к 127.0.0.1: из локальной сети порты недоступны.
+
+services:
+  postgres:
+    ports:
+      - "127.0.0.1:5432:5432"
+
+  clickhouse:
+    ports:
+      - "127.0.0.1:8123:8123"   # HTTP: /play, JDBC, curl
+      - "127.0.0.1:9000:9000"   # родной протокол: clickhouse-client
+
+  kafka:
+    # отдельный слушатель: имя kafka снаружи сети Docker не резолвится
+    environment:
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,HOST://0.0.0.0:29092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+    ports:
+      - "127.0.0.1:29092:29092"

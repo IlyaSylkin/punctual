@@ -1,0 +1,11 @@
+<clickhouse>
+    <!-- VPS 8-16 ГБ делится с Postgres, Kafka и приложением (Н8, О1) -->
+    <max_server_memory_usage_to_ram_ratio>0.4</max_server_memory_usage_to_ram_ratio>
+
+    <!-- кэши по умолчанию рассчитаны на выделенный сервер -->
+    <mark_cache_size>536870912</mark_cache_size>
+    <uncompressed_cache_size>0</uncompressed_cache_size>
+
+    <!-- один писатель, один читатель, разовые запросы витрины -->
+    <max_concurrent_queries>16</max_concurrent_queries>
+</clickhouse>

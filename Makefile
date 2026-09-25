@@ -1,8 +1,17 @@
-.PHONY: install check lint format type test clean
+.PHONY: install up down logs check lint format type test clean
 
 install:          ## окружение и git-хуки
 	uv sync
 	uv run pre-commit install --hook-type pre-commit --hook-type commit-msg
+
+up:               ## поднять хранилища и буфер
+	docker compose up -d --wait
+
+down:
+	docker compose down
+
+logs:
+	docker compose logs -f
 
 check: lint type test   ## всё, что проверяет CI
 
