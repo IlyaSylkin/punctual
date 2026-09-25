@@ -37,3 +37,8 @@ data/
 docs/NOTES.md
 docs/CHARTER.md
 docs/backlog.md
+
+docker-compose.override.yml
+# docker
+.env
+docker-compose.override.yml

@@ -1,0 +1,24 @@
+# история git
+.git
+.gitignore
+
+# окружение и кэши — пересобираются внутри образа
+.venv
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# секреты и локальные переопределения
+.env
+docker-compose.override.yml
+
+# в образе не нужно
+docs/
+tools/
+tests/
+.github/
+CONTRIBUTING.md
+Makefile
+compose.yaml

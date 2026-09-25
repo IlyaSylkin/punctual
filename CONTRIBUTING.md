@@ -2,13 +2,25 @@
 
 ## Окружение
 
-Требуется [uv](https://docs.astral.sh/uv/). Python устанавливать не нужно —
+Требуются [uv](https://docs.astral.sh/uv/) и Docker. Python устанавливать не нужно —
 версия из `.python-version` скачивается автоматически.
 
 ```bash
-make install    # окружение, зависимости, git-хуки
-make check      # линтер, типы, тесты
+cp .env.example .env    # заполнить пароли
+make install            # окружение, зависимости, git-хуки
+make up                 # ClickHouse, Postgres, Kafka
+make check              # линтер, типы, тесты
 ```
+
+Наружу сервисы портов не выставляют. Для отладки с ноутбука:
+
+```bash
+cp docker-compose.override.yml.example docker-compose.override.yml
+make up
+```
+
+Файл `docker-compose.override.yml` Compose подхватывает автоматически и в
+репозиторий он не попадает.
 
 ## Ветки
 
