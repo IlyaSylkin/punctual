@@ -31,5 +31,20 @@ jobs:
       - name: Типы
         run: uv run mypy
 
+      - name: Окружение для контейнеров
+        run: |
+          cp .env.example .env
+          cp docker-compose.override.yml.example docker-compose.override.yml
+
+      - name: Поднять ClickHouse
+        run: docker compose up -d --wait clickhouse
+
+      - name: Применить миграции
+        run: docker compose run --rm migrate up
+
       - name: Тесты
         run: uv run pytest
+
+      - name: Логи ClickHouse при падении
+        if: failure()
+        run: docker compose logs clickhouse

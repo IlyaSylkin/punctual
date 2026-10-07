@@ -1,4 +1,4 @@
-.PHONY: install up down logs check lint format type test clean
+.PHONY: install up down logs migrate migrate-down check lint format type test clean
 
 install:          ## окружение и git-хуки
 	uv sync
@@ -12,6 +12,12 @@ down:
 
 logs:
 	docker compose logs -f
+
+migrate:          ## применить миграции ClickHouse
+	docker compose run --rm migrate up
+
+migrate-down:     ## откатить последнюю миграцию
+	docker compose run --rm migrate down 1
 
 check: lint type test   ## всё, что проверяет CI
 

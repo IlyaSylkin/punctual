@@ -9,6 +9,7 @@
 cp .env.example .env    # заполнить пароли
 make install            # окружение, зависимости, git-хуки
 make up                 # ClickHouse, Postgres, Kafka
+make migrate            # схемы таблиц
 make check              # линтер, типы, тесты
 ```
 
@@ -77,7 +78,7 @@ Refs #12
 | формат сообщения коммита | хук `commit-msg` |
 | большие файлы, приватные ключи, конфликтные маркеры | `pre-commit-hooks` |
 | синтаксис YAML и TOML, пробелы, перевод строки | `pre-commit-hooks` |
-| тесты | `pytest` в `make check` и CI |
+| тесты | `pytest` в `make check` и CI, против баз в контейнерах |
 
 Красный CI блокирует мерж. Исключений для владельца репозитория нет.
 

@@ -75,6 +75,20 @@ services:
       retries: 5
       start_period: 40s
 
+  # не поднимается вместе с остальными: docker compose run --rm migrate up
+  migrate:
+    image: migrate/migrate:v4.20.1
+    profiles: [tools]
+    volumes:
+      - ./migrations:/migrations:ro
+    depends_on:
+      clickhouse:
+        condition: service_healthy
+    entrypoint:
+      - migrate
+      - -path=/migrations/clickhouse
+      - -database=clickhouse://clickhouse:9000?username=${CLICKHOUSE_USER}&password=${CLICKHOUSE_PASSWORD}&database=${CLICKHOUSE_DB}&x-multi-statement=true
+
 volumes:
   pgdata:
   chdata:
