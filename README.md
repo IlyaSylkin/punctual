@@ -134,6 +134,7 @@ cd punctual
 cp .env.example .env    # заполнить пароли
 make install            # окружение, зависимости, git-хуки
 make up                 # ClickHouse, Postgres, Kafka
+make migrate            # схемы таблиц
 make check              # линтер, типы, тесты
 ```
 
